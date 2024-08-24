@@ -1,0 +1,8 @@
+.navbar a:hover {
+    color: #00B4D8;
+}
+
+.navbar a.active {
+    font-weight: bold;
+    color: #00B4D8;
+}
