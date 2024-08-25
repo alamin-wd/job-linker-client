@@ -29,7 +29,7 @@ const Login = () => {
             console.log(user);
 
             Swal.fire({
-                title: "You Have Successfully Sign In",
+                title: "Your Login is Successful",
                 showClass: {
                     popup: `
                         animate__animated
@@ -51,9 +51,7 @@ const Login = () => {
         catch (error) {
             console.error("Sign-in failed:", error);
         }
-        finally {
-             // Hide spinner
-        }
+       
     };
 
     return (

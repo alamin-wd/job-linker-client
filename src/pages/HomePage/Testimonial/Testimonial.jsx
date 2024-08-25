@@ -8,8 +8,10 @@ import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from 'swiper/modules';
 import { useEffect, useState } from 'react';
-import { FaQuoteLeft } from 'react-icons/fa';
-import Rating from 'react-rating';
+
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
+
 
 const Testimonial = () => {
 
@@ -28,20 +30,37 @@ const Testimonial = () => {
             <Swiper navigation={true} modules={[Navigation]}
                 className="mySwiper ">
 
-                <div>
+                <div className=''>
                     {
                         reviews.map(review => <SwiperSlide
                             key={review._id}>
 
-                            <div className=' flex flex-col justify-center items-center text-center my-6 px-20'>
+                            <div className='w-5/6 mx-auto flex flex-col justify-center items-center text-center my-6 px-20'>
+
+                                <div className='flex justify-center items-center gap-10'>
+
+                                    <div className="bg-[#00B4D8] h-36 rounded-full">
+                                    <img src={review.image} alt={review.name}
+                                        className='h-24 mt-4' />
+                                    </div>
+                                    
+                                    <div className='text-left space-y-3'>
+
+                                        <h4 className='text-[#00B4D8] text-4xl font-medium'>{review.name}</h4>
+
+                                        <p className='text-[#00B4D8] text-lg font-medium'>{review.role}</p>
+                                    </div>
+
+                                </div>
+
+                                <div className="divider divider-info"></div>
 
                                 <Rating style={{ maxWidth: 250 }} value={review.rating} />
 
-                                <FaQuoteLeft className='text-6xl my-6' />
+                                <p className='text-[#444444] text-lg my-3 italic'>  {review.details} </p>
 
-                                <p className='text-[#444444] text-lg mb-3'>{review.details}</p>
+                                <div className="divider divider-info"></div>
 
-                                <h4 className='text-[#CD9003] text-3xl font-medium'>{review.name}</h4>
                             </div>
                         </SwiperSlide>)
                     }

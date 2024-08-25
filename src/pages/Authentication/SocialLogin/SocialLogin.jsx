@@ -3,40 +3,45 @@ import { useContext } from "react";
 import { FaFacebookF, FaGithub, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const SocialLogins = () => {
 
     const { googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const handleGoogleLogin = async () => {
         try {
-            await googleLogin()
-            navigate("/");
+
+            const result = await googleLogin();
+            const { user } = result;
+
+            const userInfo = {
+                name: user.displayName,
+                email: user.email,
+                role: "Worker",
+                coins: 10
+            };
+
+            const response = await axiosPublic.post('/users', userInfo);
+
+            if (response.data.success) {
+
+                navigate("/");
+            }
+            else {
+                
+                console.log(response.data.message);
+            }
         }
         catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
-
-    // const handleGithubLogin = () => {
-    //     githubLogin()
-    //         .then(result => {
-    //             console.log(result.user);
-    //             navigate("/");
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //             setLoading(false);
-
-    //         });
-    // }
+    };
 
     return (
         <div className="w-full flex flex-row md:flex-col justify-between items-center gap-6 my-6">
-            
-
-            {/* onClick={handleFacebookLogin} */}
 
             <button onClick={handleGoogleLogin}
                 className="w-full flex justify-center items-center gap-4 p-2
@@ -59,14 +64,12 @@ const SocialLogins = () => {
                 LinkedIn
             </button>
 
-            {/* onClick={handleGithubLogin} */}
             <button
                 className="w-full flex justify-center items-center gap-4 p-2
             hover:bg-[#444444] hover:text-white text-xl font-medium border-2 border-[#00B4D8] rounded-lg">
                 <FaGithub className="text-3xl" />
                 Github
             </button>
-
         </div>
     );
 };
