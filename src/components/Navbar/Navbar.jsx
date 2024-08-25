@@ -3,8 +3,27 @@ import "./Navbar.css";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { MdOutlineNotifications } from "react-icons/md";
 import { FiMessageSquare } from "react-icons/fi";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const menus =
         <>
@@ -40,7 +59,7 @@ const Navbar = () => {
         </>
 
     return (
-        <div className="navbar bg-base-100 px-10">
+        <div className={`navbar w-full px-10 top-0 left-0 z-50 transition-all duration-300 bg-black ${isScrolled ? 'fixed bg-opacity-80' : 'h-20 absolute bg-opacity-30'}`}>
 
             <div className="navbar-start">
 
@@ -61,7 +80,7 @@ const Navbar = () => {
 
                 {/* Website name/logo */}
                 <Link to={'/'}>
-                    <button className="text-2xl md:text-4xl text-[#03045E] font-bold">
+                    <button className="text-2xl md:text-4xl text-[#48CAE4] font-bold">
                         Job Linker
                     </button>
                 </Link>
@@ -69,7 +88,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-center hidden md:flex">
-                <ul className="menu-horizontal text-md font-medium gap-6 px-2">
+                <ul className="menu-horizontal text-md text-white font-medium gap-6 px-2">
                     {
                         menus
                     }
@@ -82,7 +101,7 @@ const Navbar = () => {
             <div className="navbar-end flex items-center gap-6">
 
                 <Link to={'https://www.youtube.com'}>
-                    <button className="hover:bg-[#48CAE4] hover:text-white text-sm font-medium p-2 rounded-md">
+                    <button className="hover:bg-[#48CAE4] text-white text-sm font-medium p-2 rounded-md">
                         Watch Demo
                     </button>
                 </Link>
@@ -91,14 +110,14 @@ const Navbar = () => {
 
                     <button className="">
                         <div className="indicator">
-                            <FiMessageSquare className="text-2xl hover:text-[#48CAE4]" />
+                            <FiMessageSquare className="text-2xl text-white hover:text-[#48CAE4]" />
                             <span className="badge badge-xs badge-primary indicator-item"></span>
                         </div>
                     </button>
 
                     <button className="">
                         <div className="indicator">
-                            <MdOutlineNotifications className="text-2xl hover:text-[#48CAE4]" />
+                            <MdOutlineNotifications className="text-2xl text-white hover:text-[#48CAE4]" />
                             <span className="badge badge-xs badge-primary indicator-item"></span>
                         </div>
                     </button>

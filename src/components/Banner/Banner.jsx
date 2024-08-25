@@ -53,14 +53,16 @@ const Banner = () => {
                                     placeholder="Job title, Skills, or Company"
                                     className="input input-bordered input-info w-full max-w-md" />
 
-                                <select className="select select-info w-full max-w-xs">
+                                <select className="select select-info w-full max-w-md">
                                     <option disabled selected>Select City or State</option>
                                     <option>New York</option>
                                     <option>Los Angeles</option>
                                     <option>Texas</option>
                                 </select>
 
-                                <button className="btn btn-accent">Search</button>
+                                <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-5 py-3 rounded-md">
+                                    Search
+                                </button>
                             </div>
                         </div>
 
@@ -98,7 +100,9 @@ const Banner = () => {
                                     <option>Texas</option>
                                 </select>
 
-                                <button className="btn btn-accent">Search</button>
+                                <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-5 py-3 rounded-md">
+                                    Search
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -135,7 +139,9 @@ const Banner = () => {
                                     <option>Texas</option>
                                 </select>
 
-                                <button className="btn btn-accent">Search</button>
+                                <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-5 py-3 rounded-md">
+                                    Search
+                                </button>
                             </div>
                         </div>
                     </div>
