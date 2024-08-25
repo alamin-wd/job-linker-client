@@ -2,6 +2,7 @@
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import SocialLogins from '../SocialLogin/SocialLogin';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const {
@@ -16,7 +17,7 @@ const Register = () => {
     };
 
     return (
-        <div className="flex justify-center items-center bg-gray-100 mt-20 py-10">
+        <div className="flex justify-center items-center mt-20 py-10">
 
             <div className="w-5/6 mx-auto bg-[#CAF0F8] px-20 py-10 rounded-lg shadow-2xl">
 
@@ -151,6 +152,12 @@ const Register = () => {
 
                     </div>
                 </div>
+            </div>
+
+            <div>
+                <Helmet>
+                    <title>Register - Job Linker</title>
+                </Helmet>
             </div>
         </div>
     );

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "../../../components/Banner/Banner";
 import Features from "../Features/Features";
 import HowItWorks from "../HowItWorks/HowItWorks";
@@ -8,6 +9,10 @@ const Home = () => {
     return (
 
         <div className="max-w-full mx-auto">
+
+            <Helmet>
+                <title>Home - Job Linker</title>
+            </Helmet>
 
             <Banner></Banner>
 

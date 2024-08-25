@@ -1,6 +1,6 @@
 
 // import { useContext } from "react";
-import { FaFacebookF, FaGithub, FaGoogle, FaLinkedin } from "react-icons/fa";
+import { FaFacebookF, FaGithub, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 // import { AuthContext } from "../../../providers/AuthProvider";
 // import { useNavigate } from "react-router-dom";
 
@@ -56,7 +56,7 @@ const SocialLogins = () => {
             <button
                 className="w-full flex justify-center items-center gap-4 p-2
             hover:bg-[#0077B5] hover:text-white text-xl font-medium border-2 border-[#00B4D8] rounded-lg">
-                <FaLinkedin className="text-3xl" />
+                <FaLinkedinIn className="text-3xl" />
                 LinkedIn
             </button>
 

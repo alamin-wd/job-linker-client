@@ -2,6 +2,7 @@
 import Swal from 'sweetalert2';
 import SocialLogins from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
@@ -54,7 +55,7 @@ const Login = () => {
     };
 
     return (
-        <div className="flex justify-center items-center bg-gray-100 mt-20 py-10">
+        <div className="flex justify-center items-center mt-20 py-10">
 
             <div className="w-5/6 mx-auto bg-[#CAF0F8] px-20 py-10 rounded-lg shadow-2xl">
 
@@ -125,6 +126,12 @@ const Login = () => {
                     </div>
 
                 </div>
+            </div>
+
+            <div>
+                <Helmet>
+                    <title>Login - Job Linker</title>
+                </Helmet>
             </div>
         </div>
     );

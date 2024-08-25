@@ -132,7 +132,7 @@ const Navbar = () => {
                     </Link>
 
                     <Link to={'/register'}>
-                        <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-4 py-2 rounded-md">
+                        <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium p-2 rounded-md">
                             Register
                         </button>
                     </Link>
