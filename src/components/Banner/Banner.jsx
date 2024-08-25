@@ -10,10 +10,6 @@ import 'swiper/css/pagination';
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 
-import img1 from '../../assets/slider/slider1.png';
-import img2 from '../../assets/slider/slider2.png';
-import img3 from '../../assets/slider/slider3.png';
-
 const Banner = () => {
 
     return (
@@ -31,9 +27,9 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className='relative'>
 
-                        <img src={img1} alt="" />
+                        <img src="https://i.ibb.co/hWzzSh9/1.png" alt="" />
 
-                        <div className='w-full min-h-screen text-center absolute inset-0 bg-black bg-opacity-30'>
+                        <div className='w-full min-h-screen text-center absolute inset-0 bg-black bg-opacity-50'>
 
                             <div className='w-4/5 mx-auto mt-36'>
                                 <h2 className="text-white text-4xl md:text-6xl font-bold">
@@ -72,7 +68,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className='relative'>
 
-                        <img src={img2} alt="" />
+                        <img src="https://i.ibb.co/cJ5vp7N/2.png" alt="" />
 
                         <div className='w-full min-h-screen text-center absolute inset-0 bg-black bg-opacity-50'>
 
@@ -111,9 +107,9 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className='relative'>
 
-                        <img src={img3} alt="" />
+                        <img src="https://i.ibb.co/Tc7ckNs/4.png" alt="" />
 
-                        <div className='w-full min-h-screen text-center absolute inset-0 bg-black bg-opacity-40'>
+                        <div className='w-full min-h-screen text-center absolute inset-0 bg-black bg-opacity-60'>
 
                             <div className='w-4/5 mx-auto mt-36'>
                                 <h2 className="text-white text-4xl md:text-6xl font-bold">

@@ -5,7 +5,7 @@ const Footer = () => {
 
     return (
 
-        <div className="w-full bg-gradient-to-r from-[#ADE8F4] to-[#CAF0F8] py-10">
+        <div className="w-full bg-gradient-to-r from-[#ade8f47a] to-[#caf0f800] py-10">
 
             <div className="flex justify-between items-start gap-20 p-10 ">
 

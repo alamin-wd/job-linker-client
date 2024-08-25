@@ -125,13 +125,17 @@ const Navbar = () => {
 
                 <div className="flex items-center gap-6">
 
-                    <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-4 py-2 rounded-md">
-                        Login
-                    </button>
+                    <Link to={'/login'}>
+                        <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-4 py-2 rounded-md">
+                            Login
+                        </button>
+                    </Link>
 
-                    <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-4 py-2 rounded-md">
-                        Register
-                    </button>
+                    <Link to={'/register'}>
+                        <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-4 py-2 rounded-md">
+                            Register
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
