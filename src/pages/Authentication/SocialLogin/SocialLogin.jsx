@@ -1,24 +1,23 @@
 
-// import { useContext } from "react";
+import { useContext } from "react";
 import { FaFacebookF, FaGithub, FaGoogle, FaLinkedinIn } from "react-icons/fa";
-// import { AuthContext } from "../../../providers/AuthProvider";
-// import { useNavigate } from "react-router-dom";
-
+import { AuthContext } from "../../../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const SocialLogins = () => {
 
-    // const { googleSignIn } = useContext(AuthContext);
-    // const navigate = useNavigate();
+    const { googleLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    // const handleGoogleLogin = async () => {
-    //     try {
-    //         await googleSignIn()
-    //         navigate("/");
-    //     }
-    //     catch (error) {
-    //         console.log(error)
-    //     }
-    // }
+    const handleGoogleLogin = async () => {
+        try {
+            await googleLogin()
+            navigate("/");
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
     // const handleGithubLogin = () => {
     //     githubLogin()
@@ -35,11 +34,11 @@ const SocialLogins = () => {
 
     return (
         <div className="w-full flex flex-row md:flex-col justify-between items-center gap-6 my-6">
-            {/* onClick={handleGoogleLogin} */}
+            
 
             {/* onClick={handleFacebookLogin} */}
 
-            <button
+            <button onClick={handleGoogleLogin}
                 className="w-full flex justify-center items-center gap-4 p-2
             hover:bg-[#DB4437] hover:text-white text-xl font-medium border-2 border-[#00B4D8] rounded-lg">
                 <FaGoogle className="text-3xl" />

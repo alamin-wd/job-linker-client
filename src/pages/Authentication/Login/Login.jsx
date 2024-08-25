@@ -3,10 +3,12 @@ import Swal from 'sweetalert2';
 import SocialLogins from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../../../providers/AuthProvider';
+import { useContext } from 'react';
 
 const Login = () => {
 
-    // const { signIn } = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -22,7 +24,7 @@ const Login = () => {
         const password = form.password.value;
 
         try {
-            const result = await Login(email, password);
+            const result = await login(email, password);
             const user = result.user;
             console.log(user);
 

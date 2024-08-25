@@ -1,19 +1,71 @@
 
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogins from '../SocialLogin/SocialLogin';
 import { Helmet } from 'react-helmet-async';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Register = () => {
+
+    const axiosPublic = useAxiosPublic();
+
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
-    } = useForm();
+    } = useForm()
+
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
-        // Handle registration logic here
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+
+                        // Store user info to DB
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+
+                                    reset();
+
+                                    Swal.fire({
+                                        title: "You Have Successfully Sign Up",
+                                        showClass: {
+                                            popup: `
+                                            animate__animated
+                                            animate__fadeInUp
+                                            animate__faster
+                                        `
+                                        },
+                                        hideClass: {
+                                            popup: `
+                                            animate__animated
+                                            animate__fadeOutDown
+                                            animate__faster
+                                        `
+                                        }
+                                    });
+                                    navigate('/')
+                                }
+                            })
+                    })
+                    .catch(error => console.log(error))
+            })
     };
 
     return (

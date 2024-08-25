@@ -3,11 +3,22 @@ import "./Navbar.css";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { MdOutlineNotifications } from "react-icons/md";
 import { FiMessageSquare } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
 
     const [isScrolled, setIsScrolled] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -125,17 +136,57 @@ const Navbar = () => {
 
                 <div className="flex items-center gap-6">
 
-                    <Link to={'/login'}>
-                        <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-4 py-2 rounded-md">
-                            Login
-                        </button>
-                    </Link>
+                    {
+                        user ? <>
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-16 rounded-full"
+                                        title={user?.displayName}>
 
-                    <Link to={'/register'}>
-                        <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium p-2 rounded-md">
-                            Register
-                        </button>
-                    </Link>
+                                        <img
+                                            referrerPolicy="no-referrer"
+                                            src={user?.photoURL}
+                                            alt={user.displayName} />
+                                    </div>
+                                </label>
+
+                                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content rounded-lg w-56 bg-[#00b4d884] text-white border border-[#48CAE4]">
+                                    <li>
+                                        <a>{user.displayName}</a>
+                                    </li>
+
+                                    <li>
+                                        <a>{user.email}</a>
+                                    </li>
+
+                                    <li>
+                                        <button onClick={handleLogOut}
+                                            className="px-3 py-1 text-white hover:text-[#EEFF25] font-medium">
+                                            Sign Out
+                                        </button>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </>
+                            :
+                            <>
+                                <Link to={'/login'}>
+                                    <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium px-4 py-2 rounded-md">
+                                        Login
+                                    </button>
+                                </Link>
+
+                                <Link to={'/register'}>
+                                    <button className="bg-[#00B4D8] hover:bg-[#48CAE4] text-white font-medium p-2 rounded-md">
+                                        Register
+                                    </button>
+                                </Link>
+                            </>
+                    }
+
+
                 </div>
             </div>
         </div>
