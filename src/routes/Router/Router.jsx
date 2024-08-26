@@ -4,9 +4,13 @@ import Home from "../../pages/HomePage/Home/Home";
 import Register from "../../pages/Authentication/Register/Register";
 import Login from "../../pages/Authentication/Login/Login";
 import NotFound from "../../components/NotFound/NotFound";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
+import Content from "../../pages/Dashboard/Content/Content";
 
 
 export const router = createBrowserRouter([
+
     {
         path: "/",
         element: <Main></Main>,
@@ -28,4 +32,19 @@ export const router = createBrowserRouter([
             }
         ]
     },
+
+    // Dashboard
+    {
+        path: "dashboard",
+        element: <PrivateRoute>
+                            <DashboardLayout></DashboardLayout>
+                </PrivateRoute>,
+
+        children: [
+            {
+                path: '',
+                element: <Content></Content>
+            }
+        ]
+    }
 ]);

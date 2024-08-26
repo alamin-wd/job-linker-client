@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { MdOutlineNotifications } from "react-icons/md";
@@ -10,6 +10,8 @@ const Navbar = () => {
 
     const [isScrolled, setIsScrolled] = useState(false);
     const { user, logOut } = useContext(AuthContext);
+    const location = useLocation();
+    const isInDashboard = location.pathname.startsWith('/dashboard');
 
     const handleLogOut = () => {
 
@@ -50,27 +52,31 @@ const Navbar = () => {
                 </NavLink>
             </li>
 
-            <li>
-                <NavLink to={'/find-work'} activeClassName="active">
-                    Find Work
-                </NavLink>
-            </li>
+            {user && !isInDashboard && (
+                <li>
+                    <NavLink to={'/find-work'} activeClassName="active">
+                        Find Work
+                    </NavLink>
+                </li>
+            )}
 
-            <li>
-                <NavLink to={'/post-work'} activeClassName="active">
-                    Post Work
-                </NavLink>
-            </li>
+            {user && !isInDashboard && (
 
-            <li>
-                <NavLink activeClassName="active">
+                <li>
+                    <NavLink to={'/post-work'} activeClassName="active">
+                        Post Work
+                    </NavLink>
+                </li>
+            )}
 
-                </NavLink>
-            </li>
+            {/* {user && !isInDashboard && (
+
+               
+            )} */}
         </>
 
     return (
-        <div className={`navbar w-full px-10 top-0 left-0 z-50 transition-all duration-300 bg-black ${isScrolled ? 'fixed bg-opacity-80' : 'h-20 absolute bg-opacity-30'}`}>
+        <div className={`navbar w-full px-10 top-0 left-0 z-50 transition-all duration-300 bg-black ${isScrolled ? 'fixed bg-opacity-80' : 'h-20 absolute bg-opacity-50'}`}>
 
             <div className="navbar-start">
 
@@ -109,13 +115,28 @@ const Navbar = () => {
             </div>
 
             {/* Navbar End */}
-            <div className="navbar-end flex items-center gap-6">
+            <div className="navbar-end flex items-center gap-6 ms-4">
 
-                <Link to={'https://www.youtube.com'}>
-                    <button className="hover:bg-[#48CAE4] text-white text-sm font-medium p-2 rounded-md">
-                        Watch Demo
-                    </button>
-                </Link>
+                {user && isInDashboard && (
+
+                    <div className="flex justify-center items-center gap-6">
+
+                        <h3 className=" text-[#00B4D8] text-lg font-medium border border-[#00B4D8] px-4 py-2">Available Coins: 0</h3>
+
+                        <h3 className="text-[#00B4D8] text-lg font-medium border border-[#00B4D8] px-4 py-2">Role: Worker</h3>
+
+                    </div>
+                )}
+
+                {user && !isInDashboard && (
+
+                    <Link to={'https://www.youtube.com'}>
+                        <button className="hover:bg-[#48CAE4] text-white text-sm font-medium p-2 rounded-md">
+                            Watch Demo
+                        </button>
+                    </Link>
+                )}
+
 
                 <div className="flex items-center mt-2 gap-6">
 
@@ -138,6 +159,7 @@ const Navbar = () => {
 
                     {
                         user ? <>
+
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-16 rounded-full"
