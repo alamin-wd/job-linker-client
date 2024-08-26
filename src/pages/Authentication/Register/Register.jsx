@@ -37,6 +37,7 @@ const Register = () => {
                         const userInfo = {
                             name: data.name,
                             email: data.email,
+                            photo: data.photoURL,
                             role: data.role,
                             coins: coins
                         };

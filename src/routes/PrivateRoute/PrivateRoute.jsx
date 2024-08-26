@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import LoadingSpinner from '../../components/LoadingSnipper/LoadingSpinner';
 
 const PrivateRoute = ({ children }) => { 
 
@@ -9,7 +10,7 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return 'Please Wait'
+        return <LoadingSpinner></LoadingSpinner>
     }
 
     if (user) {

@@ -20,6 +20,7 @@ const SocialLogins = () => {
             const userInfo = {
                 name: user.displayName,
                 email: user.email,
+                photo: user.photoURL,
                 role: "Worker",
                 coins: 10
             };

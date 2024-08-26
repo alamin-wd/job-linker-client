@@ -16,7 +16,7 @@ const DashboardLayout = () => {
             <div className="w-11/12 mx-auto my-10 md:flex gap-10">
 
                 {/* Side Bar */}
-                <div className="w-80 min-h-screen ">
+                <div className="w-72 min-h-screen ">
                     <SideBar></SideBar>
                 </div>
 

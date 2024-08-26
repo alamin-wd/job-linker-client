@@ -1,10 +1,17 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Content = () => {
+
+    const { user } = useContext(AuthContext);
 
     return (
 
         <div className="w-full h-full shadow-xl">
-            <h2>Content by OutLet</h2>
+            
+            <div>
+                <h3></h3>
+            </div>
         </div>
     );
 };

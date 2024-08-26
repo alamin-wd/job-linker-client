@@ -7,6 +7,7 @@ import NotFound from "../../components/NotFound/NotFound";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
 import Content from "../../pages/Dashboard/Content/Content";
+import Users from "../../pages/Dashboard/Users/Users";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +45,13 @@ export const router = createBrowserRouter([
             {
                 path: '',
                 element: <Content></Content>
+            },
+          
+
+            // Admin Routes
+            {
+                path: 'manage-users',
+                element: <Users></Users>
             }
         ]
     }
