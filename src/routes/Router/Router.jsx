@@ -6,8 +6,8 @@ import Login from "../../pages/Authentication/Login/Login";
 import NotFound from "../../components/NotFound/NotFound";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
-import Content from "../../pages/Dashboard/Content/Content";
 import Users from "../../pages/Dashboard/Users/Users";
+import DashboardHome from "../../pages/Dashboard/DashboardHome/DashboardHome";
 
 
 export const router = createBrowserRouter([
@@ -38,21 +38,21 @@ export const router = createBrowserRouter([
     {
         path: "dashboard",
         element: <PrivateRoute>
-                            <DashboardLayout></DashboardLayout>
+                    <DashboardLayout></DashboardLayout>
                 </PrivateRoute>,
-
         children: [
             {
                 path: '',
-                element: <Content></Content>
+                element: <DashboardHome></DashboardHome> 
             },
-          
-
+            
             // Admin Routes
             {
                 path: 'manage-users',
                 element: <Users></Users>
-            }
+            },
+            
         ]
     }
+    
 ]);

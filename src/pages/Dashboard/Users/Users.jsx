@@ -73,11 +73,6 @@ const Users = () => {
     };
 
 
-    if (users.length === 0)
-        return <div className="fixed inset-0 flex justify-center items-center z-50">
-            <p className="text-3xl font-semibold">No Workers Available right now.</p>
-        </div>;
-
     return (
 
         <div className="container mx-auto p-5">

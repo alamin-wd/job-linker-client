@@ -52,16 +52,12 @@ const Register = () => {
                                     navigate('/');
 
                                     Swal.fire({
-                                        title: "You Have Successfully Signed Up",
-                                        icon: 'success',
-                                        showClass: {
-                                            popup: 'animate__animated animate__fadeInUp animate__faster'
-                                        },
-                                        hideClass: {
-                                            popup: 'animate__animated animate__fadeOutDown animate__faster'
-                                        }
-                                    });
-
+                                        position: "center",
+                                        icon: "success",
+                                        title: "Your Registration is Successful",
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                      });
                                 }
                             })
                             .catch(err => {

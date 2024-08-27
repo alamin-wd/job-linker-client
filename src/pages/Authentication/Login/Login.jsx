@@ -29,22 +29,12 @@ const Login = () => {
             console.log(user);
 
             Swal.fire({
-                title: "Your Login is Successful",
-                showClass: {
-                    popup: `
-                        animate__animated
-                        animate__fadeInUp
-                        animate__faster
-                    `
-                },
-                hideClass: {
-                    popup: `
-                        animate__animated
-                        animate__fadeOutDown
-                        animate__faster
-                    `
-                }
-            });
+                position: "center",
+                icon: "success",
+                title: "You Have Successfully Logged In",
+                showConfirmButton: false,
+                timer: 1000
+              });
 
             navigate(from, {replace: true});
         }
