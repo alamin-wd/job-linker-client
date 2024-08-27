@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-const Users = () => {
+const ManageUsers = () => {
 
     const axiosSecure = useAxiosSecure();
 
@@ -140,6 +140,6 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default ManageUsers;
 
 

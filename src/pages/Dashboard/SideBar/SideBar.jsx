@@ -68,7 +68,14 @@ const SideBar = () => {
                         </li>
 
                         <li>
-                            <NavLink to={'/dashboard/my-submissions'}>
+                            <NavLink to={'/dashboard/task-details'}>
+                                <GrTransaction className="text-lg" />
+                                Task Details
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink to={'/dashboard/submissions'}>
                                 <MdDriveFileMoveOutline className="text-lg" />
                                 My Submissions <span className=" text-sm font-bold">(0)</span>
                             </NavLink>
@@ -78,13 +85,6 @@ const SideBar = () => {
                             <NavLink to={'/dashboard/withdrawals'}>
                                 <BiMoneyWithdraw className="text-lg" />
                                 Withdrawals
-                            </NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink to={'/dashboard/payment-history'}>
-                                <GrTransaction className="text-lg" />
-                                Transactions
                             </NavLink>
                         </li>
 
@@ -108,7 +108,7 @@ const SideBar = () => {
                         </li>
 
                         <li>
-                            <NavLink to={'/dashboard/my-task'}>
+                            <NavLink to={'/dashboard/my-tasks'}>
                                 <FaTasks className="text-lg" />
                                 My Task's
                             </NavLink>

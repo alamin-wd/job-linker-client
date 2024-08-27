@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import LoadingSpinner from "../../../components/LoadingSnipper/LoadingSpinner";
 import useRole from "../../../hooks/useRole";
-import AdminHome from "../Admin/AdminHome/AdminHome";
-import CreatorHome from "../TaskCreator/CreatorHome/CreatorHome";
-import WorkerHome from "../Worker/WorkerHome/WorkerHome";
+import WorkerHome from "../Worker/WorkerHome";
+import CreatorHome from "../TaskCreator/CreatorHome";
+import AdminHome from "../Admin/AdminHome";
 
 const DashboardHome = () => {
     const { user, loading } = useContext(AuthContext);
