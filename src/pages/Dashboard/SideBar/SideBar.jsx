@@ -1,7 +1,7 @@
 
 import { useContext } from "react";
 import { FaCoins, FaHistory, FaRegListAlt, FaTasks } from "react-icons/fa";
-import { MdAddTask, MdDriveFileMoveOutline, MdOutlineHome, MdOutlineManageAccounts, MdOutlineManageSearch, MdOutlineReviews } from "react-icons/md"; 
+import { MdAddTask, MdDriveFileMoveOutline, MdOutlineHome, MdOutlineManageAccounts, MdOutlineManageSearch, MdOutlineReviews } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { BiMoneyWithdraw } from "react-icons/bi";
@@ -12,16 +12,20 @@ import useRole from "../../../hooks/useRole";
 const SideBar = () => {
     const { user } = useContext(AuthContext);
     const { userData } = useUserData();
-    const [role] = useRole(); 
+    const [role] = useRole();
 
-    const loggedInUserData = Array.isArray(userData)
-        ? userData.find(user => user.email === user?.email)
+    // Calculate Coins to USD
+
+
+    // Filter logged In User Data
+    const loggedInUserData = userData && Array.isArray(userData)
+        ? userData.find(userItem => userItem.email.toLowerCase() === user?.email?.toLowerCase())
         : null;
 
     return (
 
         <div className="px-6 h-[calc(100vh-0rem)] overflow-y-auto shadow-xl">
-            
+
             <div className="mt-2 mb-6 text-center">
 
                 <div className="avatar online">
@@ -34,14 +38,17 @@ const SideBar = () => {
 
                 <h3 className="text-2xl font-semibold mt-2">{user.displayName}</h3>
 
-                <h4 className="text-md text-red-500 font-normal italic">
-                    Balance: ${loggedInUserData?.coins ?? "0.00"} USD
-                </h4>
+
+                {(role === 'TaskCreator' || role === 'Worker') && (
+                    <h4 className="text-md text-red-500 font-normal italic">
+                        Balance: ${loggedInUserData?.coins ?? "0.00"} USD
+                    </h4>
+                )}
 
             </div>
 
             <ul className="menu menu-horizontal md:menu-vertical text-[#151515] font-medium space-y-3 capitalize">
-                
+
                 {/* For all types of users */}
                 <li>
                     <NavLink to="/dashboard" end>

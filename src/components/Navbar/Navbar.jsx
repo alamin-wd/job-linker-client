@@ -5,6 +5,8 @@ import { MdOutlineNotifications } from "react-icons/md";
 import { FiMessageSquare } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import useRole from "../../hooks/useRole";
+import useUserData from "../../hooks/useUserData";
 
 const Navbar = () => {
 
@@ -12,6 +14,9 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const location = useLocation();
     const isInDashboard = location.pathname.startsWith('/dashboard');
+
+    const [role] = useRole();
+    const { userData } = useUserData();
 
     const handleLogOut = () => {
 
@@ -21,6 +26,11 @@ const Navbar = () => {
                 console.log(error)
             })
     }
+    // Filter logged In User Data
+    const loggedInUserData = userData && Array.isArray(userData)
+        ? userData.find(userItem => userItem.email.toLowerCase() === user?.email?.toLowerCase())
+        : null;
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,46 +46,43 @@ const Navbar = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
+
     }, []);
 
     const menus =
         <>
             <li>
-                <NavLink to={'/'} activeClassName="active">
+                <NavLink to="/" activeClassName="active">
                     Home
                 </NavLink>
             </li>
 
             <li>
-                <NavLink to={'/dashboard'} activeClassName="active">
+                <NavLink to="/dashboard" activeClassName="active">
                     Dashboard
                 </NavLink>
             </li>
 
-            {user && !isInDashboard && (
+            {role === 'Worker' && (
                 <li>
-                    <NavLink to={'/find-work'} activeClassName="active">
+                    <NavLink to="/find-work" activeClassName="active">
                         Find Work
                     </NavLink>
                 </li>
             )}
 
-            {user && !isInDashboard && (
-
+            {role === 'TaskCreator' && (
                 <li>
-                    <NavLink to={'/post-work'} activeClassName="active">
+                    <NavLink to="/post-work" activeClassName="active">
                         Post Work
                     </NavLink>
                 </li>
             )}
 
-            {/* {user && !isInDashboard && (
-
-               
-            )} */}
         </>
 
     return (
+
         <div className={`navbar w-full px-10 top-0 left-0 z-50 transition-all duration-300 bg-black ${isScrolled ? 'fixed bg-opacity-80' : 'h-20 absolute bg-opacity-50'}`}>
 
             <div className="navbar-start">
@@ -121,9 +128,15 @@ const Navbar = () => {
 
                     <div className="flex justify-center items-center gap-6">
 
-                        <h3 className=" text-[#00B4D8] text-lg font-medium border border-[#00B4D8] px-4 py-2">Available Coins: 0</h3>
+                        {(role === 'TaskCreator' || role === 'Worker') && (
+                            <h3 className=" text-[#00B4D8] text-lg font-medium border border-[#00B4D8] px-3 py-2">
 
-                        <h3 className="text-[#00B4D8] text-lg font-medium border border-[#00B4D8] px-4 py-2">Role: Worker</h3>
+                            Coins: {loggedInUserData?.coins}
+
+                        </h3>
+                        )}
+
+                        <h3 className="text-[#00B4D8] text-lg font-medium border border-[#00B4D8] px-3 py-2">Role: {role}</h3>
 
                     </div>
                 )}
