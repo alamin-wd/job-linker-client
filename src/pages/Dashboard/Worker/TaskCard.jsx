@@ -1,15 +1,22 @@
+
+import { useNavigate } from 'react-router-dom'; 
 import PropTypes from 'prop-types';
-import { useNavigate } from "react-router-dom";
 
 const TaskCard = ({ task }) => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
+
+    const handleViewDetails = () => {
+
+        navigate(`/dashboard/task-details/${task._id}`); 
+    };
 
     const { task_img, task_title, creator_name, completion_date, payable_amount, task_quantity } = task;
 
     return (
 
         <div>
+
             <div className="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition-shadow duration-300 ease-in-out flex flex-col ">
                 {/* Image */}
                 <img
@@ -20,7 +27,7 @@ const TaskCard = ({ task }) => {
 
                 {/* Completion Date */}
                 <p className="text-gray-600 mb-2 text-center">
-                    <strong>Completion Date:</strong> 
+                    <strong>Completion Date:</strong>
                     <span className='text-sm ms-2'>{completion_date}</span>
                 </p>
 
@@ -29,7 +36,7 @@ const TaskCard = ({ task }) => {
 
                 {/* Task Creator */}
                 <p className="text-gray-600 mb-4">
-                    <strong>Creator: </strong> 
+                    <strong>Creator: </strong>
                     <span className='ms-1 font-medium'>{creator_name}</span>
                 </p>
 
@@ -40,24 +47,23 @@ const TaskCard = ({ task }) => {
 
                 {/* Task Quantity */}
                 <p className="text-gray-600 mb-4">
-                    <strong>Task Quantity: {task_quantity}</strong> 
+                    <strong>Task Quantity: {task_quantity}</strong>
                 </p>
 
                 {/* View Details Button */}
-                <button
-                    className="w-full bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] text-white font-semibold py-2 px-4 rounded-lg hover:from-[#48CAE4] hover:to-[#00B4D8] transition-transform transform hover:scale-105 duration-200"
-                    onClick={() => navigate(`/task-details/${task._id}`)}
-                >
+                <button onClick={handleViewDetails}
+                    className="w-full bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] text-white font-semibold py-2 px-4 rounded-lg hover:from-[#48CAE4] hover:to-[#00B4D8] transition-transform transform hover:scale-105 duration-100"
+                     >
                     View Details
                 </button>
-            </div>
 
+            </div>
         </div>
     );
 };
 
 TaskCard.propTypes = {
-    task: PropTypes.node,
+   task: PropTypes.node,
 }
 
 export default TaskCard;

@@ -5,7 +5,6 @@ import { MdAddTask, MdDriveFileMoveOutline, MdOutlineHome, MdOutlineManageAccoun
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { BiMoneyWithdraw } from "react-icons/bi";
-import { GrTransaction } from "react-icons/gr";
 import useUserData from "../../../hooks/useUserData";
 import useRole from "../../../hooks/useRole";
 
@@ -64,13 +63,6 @@ const SideBar = () => {
                             <NavLink to={'/dashboard/task-list'}>
                                 <FaRegListAlt className="text-lg" />
                                 Task List
-                            </NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink to={'/dashboard/task-details'}>
-                                <GrTransaction className="text-lg" />
-                                Task Details
                             </NavLink>
                         </li>
 
