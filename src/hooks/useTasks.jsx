@@ -5,7 +5,7 @@ const useTasks = () => {
 
     const axiosPublic = useAxiosPublic();
 
-    const { data: tasks = [], isLoading } = useQuery({
+    const { data: tasks = [], isLoading, refetch } = useQuery({
 
         queryKey: ['tasks'],
 
@@ -17,7 +17,7 @@ const useTasks = () => {
         },
     });
 
-    return [tasks, isLoading];
+    return [tasks, isLoading, refetch];
 };
 
 export default useTasks;
