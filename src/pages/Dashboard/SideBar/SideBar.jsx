@@ -69,7 +69,7 @@ const SideBar = () => {
                         <li>
                             <NavLink to={'/dashboard/submissions'}>
                                 <MdDriveFileMoveOutline className="text-lg" />
-                                My Submissions <span className=" text-sm font-bold">(0)</span>
+                                My Submissions 
                             </NavLink>
                         </li>
 
