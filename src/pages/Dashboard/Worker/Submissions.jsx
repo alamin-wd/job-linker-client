@@ -17,13 +17,13 @@ const Submissions = () => {
 
             try {
 
-                const response = await axiosSecure.get('/submissions', {
+                const result = await axiosSecure.get('/submissions', {
                     params: { workerEmail: user.email }
                 });
 
 
-                if (response.data.success) {
-                    setSubmissions(response.data.data);
+                if (result.data.success) {
+                    setSubmissions(result.data.data);
                 }
 
             }
@@ -49,7 +49,7 @@ const Submissions = () => {
 
             <div className="bg-white shadow-lg rounded-lg p-8">
 
-                <table className="min-w-full bg-white border border-gray-200">
+                <table className="bg-white border border-gray-200">
 
                     <thead>
                         <tr>

@@ -90,7 +90,7 @@ const Withdrawals = () => {
 
         <div className="p-8 bg-gray-100 min-h-screen">
 
-            <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
+            <div className=" bg-white shadow-lg rounded-lg p-8">
 
                 <h2 className="text-4xl font-bold text-gray-900 mb-6">Withdrawal Form</h2>
 
@@ -164,7 +164,7 @@ const Withdrawals = () => {
 
                     <button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-transform transform hover:scale-105 duration-50"  >
+                        className="w-full bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] hover:from-[#48CAE4] hover:to-[#00B4D8] text-white font-semibold py-3 px-4 rounded-lg  transition-transform transform hover:scale-105 duration-50"  >
 
                         Withdraw
                     </button>

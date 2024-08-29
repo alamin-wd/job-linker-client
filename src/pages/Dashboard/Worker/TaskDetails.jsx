@@ -8,12 +8,12 @@ import { AuthContext } from '../../../providers/AuthProvider';
 
 const TaskDetails = () => {
 
-    const {user} = useContext(AuthContext);
-    const { id } = useParams(); 
-    const [tasks] = useTasks(); 
-    const [task, setTask] = useState(null); 
-    const [submissionDetails, setSubmissionDetails] = useState(''); 
-    const [submissionStatus, setSubmissionStatus] = useState(null); 
+    const { user } = useContext(AuthContext);
+    const { id } = useParams();
+    const [tasks] = useTasks();
+    const [task, setTask] = useState(null);
+    const [submissionDetails, setSubmissionDetails] = useState('');
+    const [submissionStatus, setSubmissionStatus] = useState(null);
     const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const TaskDetails = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         if (!task) {
             Swal.fire({
                 icon: 'error',
@@ -34,7 +34,7 @@ const TaskDetails = () => {
             });
             return;
         }
-    
+
         const submission = {
             task_id: task._id,
             task_title: task.task_title,
@@ -45,14 +45,14 @@ const TaskDetails = () => {
             worker_name: user.displayName,
             worker_email: user.email,
             creator_name: task.creator_name,
-            creator_email: task.creator_email, 
+            creator_email: task.creator_email,
             current_date: new Date().toISOString(),
             status: 'pending',
         };
-    
+
         try {
             const result = await axiosSecure.post('/submissions', submission); // Use axiosSecure here
-            
+
             if (result.data.success) {
                 Swal.fire({
                     icon: 'success',
@@ -62,7 +62,7 @@ const TaskDetails = () => {
 
                 setSubmissionDetails('');
                 setSubmissionStatus('success');
-            } 
+            }
             else {
                 Swal.fire({
                     icon: 'error',
@@ -71,10 +71,10 @@ const TaskDetails = () => {
                 });
                 setSubmissionStatus('error');
             }
-        } 
+        }
         catch (error) {
             console.error('Error submitting the task:', error);
-    
+
             Swal.fire({
                 icon: 'error',
                 title: 'Submission Failed',
@@ -83,8 +83,8 @@ const TaskDetails = () => {
             setSubmissionStatus('error');
         }
     };
-    
-    if (!task) return <LoadingSpinner></LoadingSpinner>; 
+
+    if (!task) return <LoadingSpinner></LoadingSpinner>;
 
     return (
 
@@ -103,9 +103,9 @@ const TaskDetails = () => {
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">{task.task_title}</h2>
 
                     <p className="text-gray-700 text-lg mb-6">{task.task_detail}</p>
-                    
+
                     <div className="flex justify-between items-center mb-4">
-                        
+
                         <div>
                             <p className="text-gray-600">
                                 <strong>Creator: </strong>{task.creator_name}
@@ -155,14 +155,14 @@ const TaskDetails = () => {
 
                         <button
                             type="submit"
-                            className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-transform transform hover:scale-105 duration-50">
+                            className="w-full bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] hover:from-[#48CAE4] hover:to-[#00B4D8] text-white font-semibold py-3 px-4 rounded-lg transition-transform transform hover:scale-105 duration-50">
                             Submit Task
                         </button>
-                        
+
                     </form>
 
                     {submissionStatus === 'error' && <p className="text-red-600 mt-4">Failed to submit the task.</p>}
-                    
+
                 </div>
             </div>
         </div>

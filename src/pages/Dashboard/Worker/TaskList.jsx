@@ -6,9 +6,9 @@ import TaskCard from "./TaskCard";
 
 const TaskList = () => {
 
-    const [tasks, isLoading] = useTasks();
+    const [tasks, Loading] = useTasks();
 
-    if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+    if (Loading) return <LoadingSpinner></LoadingSpinner>;
 
     if (tasks.length === 0) return <div>No tasks available right now.</div>;
 

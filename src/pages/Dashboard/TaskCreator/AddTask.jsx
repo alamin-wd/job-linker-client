@@ -24,7 +24,7 @@ const AddTask = () => {
         const totalCost = task_quantity * payable_amount;
 
         if (totalCost > user.coins) {
-            
+
             Swal.fire({
                 icon: 'error',
                 title: 'Not enough coins',
@@ -75,7 +75,7 @@ const AddTask = () => {
 
     return (
 
-        <div className="mt-10 p-6 bg-white shadow-md rounded">
+        <div className="p-6 bg-white shadow-md rounded">
 
             <h2 className="text-2xl font-bold mb-6">Add New Task</h2>
 
@@ -159,7 +159,7 @@ const AddTask = () => {
                         {...register('task_img', { required: true })} />
                 </div>
 
-                <button type="submit" className="btn btn-primary w-full">
+                <button type="submit" className=" w-full bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] hover:from-[#48CAE4] hover:to-[#00B4D8] text-white p-3 text-lg rounded-lg font-medium">
                     Add This Task
                 </button>
 

@@ -152,7 +152,7 @@ const ManageTasks = () => {
 
                         <button
                             onClick={handleCloseModal}
-                            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg" >
+                            className="mt-4 bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] hover:from-[#48CAE4] hover:to-[#00B4D8] text-white px-4 py-2 rounded-lg" >
                             Close
                         </button>
 

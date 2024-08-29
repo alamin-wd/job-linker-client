@@ -52,7 +52,7 @@ const TaskCard = ({ task }) => {
 
                 {/* View Details Button */}
                 <button onClick={handleViewDetails}
-                    className="w-full bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] text-white font-semibold py-2 px-4 rounded-lg hover:from-[#48CAE4] hover:to-[#00B4D8] transition-transform transform hover:scale-105 duration-100"
+                    className="w-full bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] hover:from-[#48CAE4] hover:to-[#00B4D8] text-white font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105 duration-100"
                      >
                     View Details
                 </button>
