@@ -4,6 +4,7 @@ import { FaFacebookF, FaGithub, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import LoadingSpinner from "../../../components/LoadingSnipper/LoadingSpinner";
 
 const SocialLogins = () => {
 
@@ -13,10 +14,9 @@ const SocialLogins = () => {
 
     const handleGoogleLogin = async () => {
         try {
-
             const result = await googleLogin();
             const { user } = result;
-
+    
             const userInfo = {
                 name: user.displayName,
                 email: user.email,
@@ -24,22 +24,20 @@ const SocialLogins = () => {
                 role: "Worker",
                 coins: 10
             };
-
+    
+            navigate("/"); 
+    
             const response = await axiosPublic.post('/users', userInfo);
-
-            if (response.data.success) {
-
-                navigate("/");
-            }
-            else {
-                
-                console.log(response.data.message);
+    
+            if (!response.data.success) {
+                return <LoadingSpinner></LoadingSpinner>
             }
         }
         catch (error) {
             console.log(error);
         }
     };
+    
 
     return (
         <div className="w-full flex flex-row md:flex-col justify-between items-center gap-6 my-6">

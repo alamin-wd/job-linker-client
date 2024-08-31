@@ -23,7 +23,7 @@ const HowItWorks = () => {
                 <div className="flex flex-col items-center">
                     
                     <div className="bg-[#00B4D8] p-4 rounded-full mb-6">
-                        <img src="https://i.ibb.co/c2HcDjm/task.png" alt="Complete Tasks" className="h-32" />
+                        <img src="https://i.postimg.cc/PqXRPDQr/task.png" alt="Complete Tasks" className="h-32" />
                     </div>
 
                     <h3 className="text-2xl font-bold text-gray-800 mb-4">Complete Tasks</h3>

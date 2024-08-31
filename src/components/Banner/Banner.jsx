@@ -2,7 +2,7 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
+// Import Swiper styles 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -14,7 +14,7 @@ const Banner = () => {
 
     return (
 
-        <div>
+        <div className='min-h-screen'>
             <Swiper
                 cssMode={true}
                 navigation={true}
@@ -27,7 +27,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className='relative'>
 
-                        <img src="https://i.ibb.co/hWzzSh9/1.png" alt="" />
+                        <img src="https://i.postimg.cc/0QJjRTSm/1.png" alt="" />
 
                         <div className='w-full min-h-screen text-center absolute inset-0 bg-black bg-opacity-50'>
 
@@ -68,7 +68,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className='relative'>
 
-                        <img src="https://i.ibb.co/cJ5vp7N/2.png" alt="" />
+                        <img src="https://i.postimg.cc/x8DC06GZ/2.png" alt="" />
 
                         <div className='w-full min-h-screen text-center absolute inset-0 bg-black bg-opacity-50'>
 
@@ -107,7 +107,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className='relative'>
 
-                        <img src="https://i.ibb.co/Tc7ckNs/4.png" alt="" />
+                        <img src="https://i.postimg.cc/wMXB3D0j/4.png" alt="" />
 
                         <div className='w-full min-h-screen text-center absolute inset-0 bg-black bg-opacity-60'>
 

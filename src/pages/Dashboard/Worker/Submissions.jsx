@@ -17,7 +17,7 @@ const Submissions = () => {
 
             try {
 
-                const result = await axiosSecure.get('/submissions', {
+                const result = await axiosSecure.get('/submission', {
                     params: { workerEmail: user.email }
                 });
 
